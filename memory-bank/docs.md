@@ -11,6 +11,7 @@ Chart-GPT is a Next.js application designed for generating or visualizing charts
 - **Linting/Formatting**: Biome 2.2.0
 - **Animations**: tw-animate-css
 - **API Layer**: tRPC v11 with TanStack React Query integration for end-to-end type-safe APIs
+- **Database ORM**: Drizzle ORM with PostgreSQL (node-postgres driver) for type-safe database interactions and migrations
 
 ## tRPC Setup and Usage
 tRPC provides type-safe API endpoints integrated with React Server Components (RSC) for efficient data fetching.
@@ -28,6 +29,18 @@ tRPC provides type-safe API endpoints integrated with React Server Components (R
 - **Context**: Basic user context in `createTRPCContext`; extend for authentication if needed.
 
 For advanced usage, refer to [tRPC React Server Components docs](https://trpc.io/docs/client/react/server-components).
+
+## Drizzle ORM Setup and Usage
+Drizzle ORM provides type-safe database queries integrated with tRPC for backend procedures.
+
+### Setup
+- **Schema**: Defined in `src/db/schema.ts` with PostgreSQL tables (e.g., `users` table).
+- **Migrations**: Configured in `drizzle.config.ts`; run `pnpm db:generate` and `pnpm db:push` for schema changes.
+- **Integration**: db added to tRPC context in `src/trpc/init.ts` for use in procedures.
+
+### Usage
+- **In tRPC Procedures**: Access `ctx.db` in server procedures for queries (e.g., `ctx.db.select().from(users)`).
+- **Example**: A `getUsers` procedure in `src/trpc/routers/_app.ts` fetches users from the database.
 
 ## Project Structure
 - **src/app/**: Next.js app router directory

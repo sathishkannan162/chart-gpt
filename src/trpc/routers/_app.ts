@@ -1,6 +1,7 @@
 import { baseProcedure, createTRPCRouter } from '../init';
 
 import { z } from 'zod';
+import { users } from '../../db/schema';
 
 export const appRouter = createTRPCRouter({
   hello: baseProcedure
@@ -13,6 +14,10 @@ export const appRouter = createTRPCRouter({
       return {
         greeting: `hello ${opts.input.text}`,
       };
+    }),
+  getUsers: baseProcedure
+    .query(async ({ ctx }) => {
+      return await ctx.db.select().from(users);
     }),
 });
 
