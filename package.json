@@ -14,6 +14,7 @@
     "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
+    "@daveyplate/better-auth-ui": "^3.2.2",
     "@tanstack/react-query": "^5.90.1",
     "@trpc/client": "^11.5.1",
     "@trpc/react-query": "^11.5.1",

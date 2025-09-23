@@ -1,8 +1,7 @@
-import { baseProcedure, createTRPCRouter, protectedProcedure } from "../init";
-import { authRouter } from "./auth";
-
 import { z } from "zod";
 import { user } from "../../db/schema";
+import { baseProcedure, createTRPCRouter } from "../init";
+import { authRouter } from "./auth";
 
 export const appRouter = createTRPCRouter({
   auth: authRouter,
@@ -19,8 +18,10 @@ export const appRouter = createTRPCRouter({
       };
     }),
 
-  getUsers: protectedProcedure.query(async ({ ctx }) => {
-    return await ctx.db.select().from(user);
+  getUsers: baseProcedure.query(async ({ ctx }) => {
+    const users = ctx.db.select().from(user);
+    console.log("users");
+    return users;
   }),
 });
 
