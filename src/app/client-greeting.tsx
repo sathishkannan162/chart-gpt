@@ -14,7 +14,7 @@ export function ClientGreeting() {
 
   return (
   <div>
-  <div>{greeting.data.greeting}</div>;
+  <div>{greeting.data.greeting}</div>
           <div>
             <h2>Users from Database:</h2>
             <ul>

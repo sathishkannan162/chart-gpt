@@ -1,12 +1,21 @@
 import { cache } from 'react';
 import { initTRPC } from '@trpc/server';
+import { auth } from '../lib/auth';
 import { db } from '../lib/db';
 
-export const createTRPCContext = cache(async () => {
+export const createTRPCContext = cache(async ({ req }: { req: Request }) => {
+  const session = await auth.api.getSession({
+    headers: new Headers(req.headers),
+  });
+  
   /**
    * @see: https://trpc.io/docs/server/context
    */
-  return { userId: 'user_123', db };
+  return {
+    session,
+    user: session?.user,
+    db
+  };
 });
 
 type Context = Awaited<ReturnType<typeof createTRPCContext>>;
@@ -27,3 +36,11 @@ const t = initTRPC.context<Context>().create({
 export const createTRPCRouter = t.router;
 export const createCallerFactory = t.createCallerFactory;
 export const baseProcedure = t.procedure;
+
+// Create protected procedure helper
+export const protectedProcedure = baseProcedure.use(async ({ ctx, next }) => {
+  if (!ctx.session?.user) {
+    throw new Error('Unauthorized');
+  }
+  return next({ ctx });
+});
