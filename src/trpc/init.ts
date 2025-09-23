@@ -1,20 +1,20 @@
-import { cache } from 'react';
-import { initTRPC } from '@trpc/server';
-import { auth } from '../lib/auth';
-import { db } from '../lib/db';
+import { initTRPC } from "@trpc/server";
+import { cache } from "react";
+import { auth } from "../lib/auth";
+import { db } from "../lib/db";
 
 export const createTRPCContext = cache(async ({ req }: { req: Request }) => {
   const session = await auth.api.getSession({
     headers: new Headers(req.headers),
   });
-  
+
   /**
    * @see: https://trpc.io/docs/server/context
    */
   return {
     session,
     user: session?.user,
-    db
+    db,
   };
 });
 
@@ -40,7 +40,7 @@ export const baseProcedure = t.procedure;
 // Create protected procedure helper
 export const protectedProcedure = baseProcedure.use(async ({ ctx, next }) => {
   if (!ctx.session?.user) {
-    throw new Error('Unauthorized');
+    throw new Error("Unauthorized");
   }
   return next({ ctx });
 });
