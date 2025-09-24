@@ -5,7 +5,7 @@ import { trpc } from "@/trpc/client";
 
 export function ClientGreeting() {
   const greeting = trpc.hello.useQuery({ text: "world" });
-  const { count, setCount } = useCount()();
+  const { count, increment, decrement, reset } = useCount()();
 
   if (!greeting.data) return <div>Loading...</div>;
 
@@ -14,14 +14,11 @@ export function ClientGreeting() {
       <div>{greeting.data.greeting}</div>
       <div style={{ marginTop: "1rem" }}>
         <div>Count: {count}</div>
-        <button onClick={() => setCount(count + 1)}>Increase</button>
-        <button
-          onClick={() => setCount(count - 1)}
-          style={{ marginLeft: "0.5rem" }}
-        >
+        <button onClick={increment}>Increase</button>
+        <button onClick={decrement} style={{ marginLeft: "0.5rem" }}>
           Decrease
         </button>
-        <button onClick={() => setCount(0)} style={{ marginLeft: "0.5rem" }}>
+        <button onClick={reset} style={{ marginLeft: "0.5rem" }}>
           Reset
         </button>
       </div>
