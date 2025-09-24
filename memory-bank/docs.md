@@ -5,7 +5,7 @@ Chart-GPT is a Next.js application designed for generating or visualizing charts
 ## Tech Stack
 
 - **Framework**: Next.js 15.5.3 (with Turbopack for faster development)
-- **UI Library**: React 19.1.0
+- **UI Library**: Shadcn ui,
 - **Styling**: Tailwind CSS 4 (with clsx, class-variance-authority, and tailwind-merge for utility-first styling)
 - **Icons**: Lucide React
 - **TypeScript**: For type safety
