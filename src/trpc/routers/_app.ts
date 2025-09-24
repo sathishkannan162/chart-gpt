@@ -9,7 +9,7 @@ export const appRouter = createTRPCRouter({
     .input(
       z.object({
         text: z.string(),
-      })
+      }),
     )
     .query((opts) => {
       return {

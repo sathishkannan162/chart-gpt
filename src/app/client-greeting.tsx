@@ -1,17 +1,15 @@
-'use client';
+"use client";
 
 import { trpc } from "@/trpc/client";
 
-
 export function ClientGreeting() {
-  const greeting = trpc.hello.useQuery({ text: 'world' });
+  const greeting = trpc.hello.useQuery({ text: "world" });
 
   if (!greeting.data) return <div>Loading...</div>;
 
-
   return (
-  <div>
-  <div>{greeting.data.greeting}</div>
-</div>
-  )
+    <div>
+      <div>{greeting.data.greeting}</div>
+    </div>
+  );
 }

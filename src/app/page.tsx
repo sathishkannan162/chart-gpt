@@ -4,7 +4,7 @@ import { ClientGreeting } from "./client-greeting";
 
 export default async function Home() {
   // prefetching query on server
-  await trpc.hello.prefetch({text: 'world'})
+  await trpc.hello.prefetch({ text: "world" });
 
   return (
     <HydrateClient>

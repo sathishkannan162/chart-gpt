@@ -19,7 +19,7 @@ export const authRouter = createTRPCRouter({
       z.object({
         email: z.string().email(),
         password: z.string().min(1),
-      })
+      }),
     )
     .mutation(async ({ input }) => {
       const result = await auth.api.signInEmail({
@@ -35,7 +35,7 @@ export const authRouter = createTRPCRouter({
         email: z.string().email(),
         password: z.string().min(1),
         name: z.string().min(1),
-      })
+      }),
     )
     .mutation(async ({ input }) => {
       const result = await auth.api.signUpEmail({
