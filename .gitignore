@@ -42,3 +42,4 @@ next-env.d.ts
 
 # python workflow
 workflows/.ipynb_checkpoints
+workflows/data/
