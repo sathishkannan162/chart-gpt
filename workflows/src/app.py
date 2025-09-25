@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from core.llm_chat_db import generate_sql_query, execute_query
+from src.core.llm_chat_db import generate_sql_query, execute_query
 
 app = FastAPI(title="LLM Chat DB API", description="API for LLM chat with database")
 
