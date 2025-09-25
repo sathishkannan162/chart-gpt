@@ -43,3 +43,5 @@ next-env.d.ts
 # python workflow
 workflows/.ipynb_checkpoints
 workflows/data/
+workflows/**/*.pyc
+workflows/**/*/__pycache__
