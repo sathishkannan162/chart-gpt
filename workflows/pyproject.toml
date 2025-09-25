@@ -1,16 +1,29 @@
 [project]
-name = "workflows"
+name = "llm-chat-db-api"
+description = "FastAPI application for LLM-powered database chat interface"
 version = "0.1.0"
-description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "fastapi>=0.117.1",
     "langchain>=0.3.27",
     "langchain-community>=0.3.29",
     "langchain-openai>=0.3.33",
+    "python-dotenv>=1.1.1",
+    "uvicorn>=0.37.0",
 ]
 
 [dependency-groups]
 dev = [
     "notebook>=7.4.5",
+    "ruff>=0.6.0",
+    "black>=24.0.0",
+    "pytest>=8.0.0",
 ]
+
+[project.scripts]
+dev = "uvicorn app:app --reload --host 0.0.0.0 --port 8000"
+start = "uvicorn app:app --host 0.0.0.0 --port 8000"
+lint = "ruff check ."
+format = "black ."
+test = "pytest"
