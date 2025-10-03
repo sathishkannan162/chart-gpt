@@ -58,7 +58,10 @@ export default function LandingPage() {
           <span className="text-2xl font-bold">ChartDB</span>
         </div>
         <div className="hidden md:flex gap-8 items-center">
-          <a href="/#features" className="hover:text-blue-300 transition-colors">
+          <a
+            href="/#features"
+            className="hover:text-blue-300 transition-colors"
+          >
             Features
           </a>
           <a href="/pricing" className="hover:text-blue-300 transition-colors">
@@ -67,9 +70,12 @@ export default function LandingPage() {
           <a href="/docs" className="hover:text-blue-300 transition-colors">
             Docs
           </a>
-          <button className="bg-white text-slate-900 px-6 py-2 rounded-full font-semibold hover:bg-blue-100 transition-all hover:scale-105">
-            Get Started
-          </button>
+          <a
+            href="/auth/sign-in"
+            className="bg-white text-slate-900 px-6 py-2 rounded-full font-semibold hover:bg-blue-100 transition-all hover:scale-105"
+          >
+            Login
+          </a>
         </div>
       </nav>
 
