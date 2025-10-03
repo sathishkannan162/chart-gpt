@@ -4,26 +4,12 @@ import {
   BarChart3,
   CheckCircle2,
   Database,
-  Globe,
   MessageSquare,
-  Shield,
   Sparkles,
   Zap,
 } from "lucide-react";
-import { useEffect, useState } from "react";
 
 export default function LandingPage() {
-  const [isVisible, setIsVisible] = useState(false);
-  const [activeFeature, setActiveFeature] = useState(0);
-
-  useEffect(() => {
-    setIsVisible(true);
-    const interval = setInterval(() => {
-      setActiveFeature((prev) => (prev + 1) % 3);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
   const features = [
     {
       icon: <Database className="w-6 h-6" />,
@@ -89,9 +75,7 @@ export default function LandingPage() {
 
       {/* Hero Section */}
       <section className="relative z-10 container mx-auto px-6 pt-20 pb-32">
-        <div
-          className={`max-w-4xl mx-auto text-center transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
-        >
+        <div className="max-w-4xl mx-auto text-center fade-in-up">
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-lg px-4 py-2 rounded-full mb-8 border border-white/20">
             <Sparkles className="w-4 h-4 text-yellow-300" />
             <span className="text-sm">Powered by Advanced AI</span>
@@ -146,14 +130,10 @@ export default function LandingPage() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {features.map((feature, index) => (
+          {features.map((feature, i) => (
             <div
-              key={index}
-              className={`bg-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10 transition-all duration-500 hover:bg-white/10 hover:scale-105 ${
-                activeFeature === index
-                  ? "ring-2 ring-blue-500 shadow-2xl shadow-blue-500/20"
-                  : ""
-              }`}
+              key={feature.title}
+              className={`bg-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10 transition-all duration-500 hover:bg-white/10 hover:scale-105 feature-card-${i}`}
             >
               <div className="bg-gradient-to-r from-blue-500 to-cyan-500 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
                 {feature.icon}
@@ -180,8 +160,8 @@ export default function LandingPage() {
                 complex queries and start having conversations with your data.
               </p>
               <div className="grid grid-cols-2 gap-4">
-                {benefits.map((benefit, index) => (
-                  <div key={index} className="flex items-center gap-2">
+                {benefits.map((benefit, i) => (
+                  <div key={benefit} className="flex items-center gap-2">
                     <CheckCircle2 className="w-5 h-5 text-green-400 flex-shrink-0" />
                     <span>{benefit}</span>
                   </div>
@@ -255,13 +235,13 @@ export default function LandingPage() {
             <span className="text-xl font-bold">ChartDB</span>
           </div>
           <div className="flex gap-6 text-gray-400 text-sm">
-            <a href="#" className="hover:text-white transition-colors">
+            <a href="/privacy" className="hover:text-white transition-colors">
               Privacy
             </a>
-            <a href="#" className="hover:text-white transition-colors">
+            <a href="/terms" className="hover:text-white transition-colors">
               Terms
             </a>
-            <a href="#" className="hover:text-white transition-colors">
+            <a href="/contact" className="hover:text-white transition-colors">
               Contact
             </a>
           </div>
