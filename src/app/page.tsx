@@ -67,7 +67,7 @@ export default function LandingPage() {
           <a href="#docs" className="hover:text-blue-300 transition-colors">
             Docs
           </a>
-          <button className="bg-white text-slate-900 px-6 py-2 rounded-full font-semibold hover:bg-blue-100 transition-all transform hover:scale-105">
+          <button className="bg-white text-slate-900 px-6 py-2 rounded-full font-semibold hover:bg-blue-100 transition-all hover:scale-105">
             Get Started
           </button>
         </div>
@@ -75,7 +75,7 @@ export default function LandingPage() {
 
       {/* Hero Section */}
       <section className="relative z-10 container mx-auto px-6 pt-20 pb-32">
-        <div className="max-w-4xl mx-auto text-center fade-in-up">
+        <div className="max-w-4xl mx-auto text-center animate-in fade-in slide-in-from-bottom-4 duration-1000">
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-lg px-4 py-2 rounded-full mb-8 border border-white/20">
             <Sparkles className="w-4 h-4 text-yellow-300" />
             <span className="text-sm">Powered by Advanced AI</span>
@@ -91,7 +91,7 @@ export default function LandingPage() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button className="bg-gradient-to-r from-blue-500 to-cyan-500 px-8 py-4 rounded-full font-semibold text-lg hover:shadow-2xl hover:shadow-blue-500/50 transition-all transform hover:scale-105 flex items-center gap-2">
+            <button className="bg-gradient-to-r from-blue-500 to-cyan-500 px-8 py-4 rounded-full font-semibold text-lg hover:shadow-2xl hover:shadow-blue-500/50 transition-all hover:scale-105 flex items-center gap-2">
               Start Free Trial
               <ArrowRight className="w-5 h-5" />
             </button>
@@ -133,7 +133,7 @@ export default function LandingPage() {
           {features.map((feature, i) => (
             <div
               key={feature.title}
-              className={`bg-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10 transition-all duration-500 hover:bg-white/10 hover:scale-105 feature-card-${i}`}
+              className={`bg-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10 transition-all duration-500 hover:bg-white/10 hover:scale-105 animate-in slide-in-from-left-4 duration-800 delay-${i * 200}`}
             >
               <div className="bg-gradient-to-r from-blue-500 to-cyan-500 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
                 {feature.icon}
@@ -218,7 +218,7 @@ export default function LandingPage() {
             Join thousands of teams already using ChartDB to make data-driven
             decisions faster.
           </p>
-          <button className="bg-white text-blue-600 px-10 py-4 rounded-full font-semibold text-lg hover:shadow-2xl transition-all transform hover:scale-105 inline-flex items-center gap-2">
+          <button className="bg-white text-blue-600 px-10 py-4 rounded-full font-semibold text-lg hover:shadow-2xl transition-all hover:scale-105 inline-flex items-center gap-2">
             Get Started for Free
             <ArrowRight className="w-5 h-5" />
           </button>
